@@ -144,9 +144,9 @@ export default function Projects() {
         <h2 className="text-3xl font-bold mb-2 text-center">
           Frontend Projects
         </h2>
-        <p className="text-xl text-center text-zinc-600 dark:text-zinc-300 mb-12">
-          Showcasing scalable and robust backend solutions
-        </p>
+   <p className="text-xl text-center text-zinc-600 dark:text-zinc-300 mb-12">
+  Crafting responsive, accessible, and visually engaging frontend experiences
+</p>
 
         <div className="space-y-12">
           {paginatedProjects.map((project) => (
