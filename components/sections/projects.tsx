@@ -142,7 +142,7 @@ export default function Projects() {
     <section id="projects" className="py-20">
       <div className="max-w-4xl mx-auto px-4">
         <h2 className="text-3xl font-bold mb-2 text-center">
-          Backend Projects
+          Frontend Projects
         </h2>
         <p className="text-xl text-center text-zinc-600 dark:text-zinc-300 mb-12">
           Showcasing scalable and robust backend solutions
