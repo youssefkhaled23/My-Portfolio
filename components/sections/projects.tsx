@@ -3,127 +3,262 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 
+interface Link {
+  name?: string;
+  url?: string;
+}
+
 interface Project {
   title: string;
   description: string;
   highlights: string[];
   technologies: string[];
-  link?: string; // Optional link property
+  link?: Link[]; // Optional link property
 }
 
 const projects: Project[] = [
   {
     title: "Neom Career",
     description:
-      "An enterprise-grade multi-tenant eCommerce solution, engineered to facilitate the management of multiple autonomous online storefronts, each uniquely identified via secure store tokens.",
+      "A scalable multi-tenant eCommerce solution architected to support independent storefronts, each with dedicated admin environments, secure token-based access, and full commerce workflows.",
     highlights: [
-      "Comprehensive eCommerce functionality including inventory, cart, checkout, and order management",
-      "Tailored store theming capabilities powered by Tailwind CSS",
-      "Robust authentication system and dedicated admin dashboards for each tenant",
-      "Scalable, maintainable architecture leveraging modern frontend frameworks",
+      "End-to-end commerce workflows: inventory, cart, checkout, and order lifecycle",
+      "Dynamic theming engine with Tailwind CSS per tenant",
+      "Secure, isolated store environments with role-based admin portals",
+      "Built for scalability and maintainability using Next.js and modern tooling",
     ],
     technologies: ["Next.js", "JavaScript", "Tailwind CSS", "Node.js"],
   },
   {
     title: "Task Management",
     description:
-      "A robust task and workflow management system enabling teams to efficiently track, assign, and collaborate on projects with multi-role support and real-time updates.",
+      "A full-featured project management and collaboration system with real-time capabilities, supporting multiple user roles, task boards, and notifications.",
     highlights: [
-      "Real-time task tracking and role-based collaboration",
-      "Responsive and intuitive UI with Tailwind CSS",
-      "Authentication and secure user management",
-      "Modular and extensible architecture suitable for enterprise scaling",
+      "Real-time updates with WebSocket-driven interactions",
+      "Role-based access control for tasks, teams, and workflows",
+      "Responsive and accessible UI leveraging Tailwind CSS",
+      "Highly modular design supporting enterprise extensibility",
     ],
     technologies: ["React.js", "JavaScript", "Tailwind CSS", "Node.js"],
+    link: [
+      {
+        name: "View Project",
+        url: "https://app.codersam.site/",
+      },
+    ],
   },
   {
     title: "Multi-Store eCommerce System",
     description:
-      "A full-featured, multi-tenant commerce system architected to support independent online stores with isolated configurations and shared infrastructure.",
+      "An enterprise-ready multi-store eCommerce platform with dynamic configuration, shared infrastructure, and support for isolated storefront management.",
     highlights: [
-      "Rich eCommerce functionality: product catalog, checkout, and order lifecycle",
-      "Per-store customization through dynamic theming",
-      "Dedicated dashboards with role-based access control",
-      "Efficient data handling and scalable frontend ecosystem",
+      "Advanced eCommerce features: product catalog, checkout, order management",
+      "Tenant-specific UI customization with real-time preview",
+      "Dedicated admin interfaces with granular role control",
+      "Optimized frontend performance using Next.js",
     ],
     technologies: ["Next.js", "JavaScript", "Tailwind CSS", "Node.js"],
   },
   {
     title: "Moracoo Platform",
     description:
-      "A high-performance web platform delivering modern design, optimized routing, and seamless user experience through responsive design principles.",
+      "A high-speed, visually engaging web platform with seamless navigation and an emphasis on performance and UX design.",
     highlights: [
-      "Mobile-first responsive design with Tailwind CSS",
-      "Optimized routing leveraging Next.js capabilities",
-      "Visually appealing and interactive interface",
+      "Mobile-first UI leveraging Tailwind CSS for responsiveness",
+      "Optimized static generation and routing with Next.js",
+      "Interactive animations and modern UI patterns",
     ],
     technologies: ["Next.js", "JavaScript", "Tailwind CSS"],
   },
   {
     title: "Golden Steel",
     description:
-      "A professional-grade industrial platform designed to elegantly showcase steel products, with multimedia support and a sleek UI layer.",
+      "A polished digital presence for an industrial company showcasing steel products with media interactivity and clean visual hierarchy.",
     highlights: [
-      "Fully responsive layout using Bootstrap 5",
-      "Interactive media elements for product presentation",
-      "Smooth and dynamic UI developed with React",
+      "Responsive, industrial-grade UI using Bootstrap 5",
+      "Rich product visualizations with embedded media",
+      "Component-based architecture using React",
     ],
     technologies: ["React", "JavaScript", "Bootstrap"],
+    link: [
+      {
+        name: "View Project",
+        url: "https://golden-steel-kappa.vercel.app/",
+      },
+    ],
   },
   {
     title: "Rawasi Kristal",
     description:
-      "A refined, high-performance website tailored to present luxury crystal and glass products, built with modern frontend practices.",
+      "A premium storefront for luxury crystal and glass products, offering elegant visual presentation and optimized performance.",
     highlights: [
-      "Type-safe development using JavaScript",
-      "Component-based architecture for clean scalability",
-      "Elegant design with Bootstrap responsiveness",
+      "Clean and scalable component structure",
+      "Fully responsive UI with Bootstrap for all devices",
+      "High-quality visuals with intuitive navigation",
     ],
     technologies: ["React", "JavaScript", "Bootstrap"],
+    link: [
+      {
+        name: "View Project",
+        url: "https://rawasicrystal.com/",
+      },
+    ],
   },
   {
     title: "Dooos Website",
     description:
-      "An interactive, media-rich corporate website for Dooos, combining stylish aesthetics with dynamic, reusable components.",
+      "An immersive corporate website built with React, integrating dynamic media and reusable components for long-term scalability.",
     highlights: [
-      "Fully responsive and mobile-optimized",
-      "Interactive user experience with immersive media",
-      "Reusable, maintainable codebase powered by React",
+      "Mobile-optimized and fully responsive design",
+      "Engaging UI/UX with interactive media support",
+      "Reusable React components for maintainability",
     ],
     technologies: ["React", "JavaScript", "Bootstrap"],
+    link: [
+      {
+        name: "View Project",
+        url: "https://dooos.vercel.app",
+      },
+    ],
   },
   {
     title: "Taif Alrwad",
     description:
-      "A visually sophisticated corporate website delivering seamless media integration and refined UI, optimized for business engagement.",
+      "A business-focused website offering a refined digital presence with rich media content and optimized performance.",
     highlights: [
-      "Business-oriented visual design",
-      "Integrated video and media experiences",
-      "Optimized for performance and scalability using React & JavaScript",
+      "Corporate-grade aesthetics with professional styling",
+      "Integrated media experience using modern web APIs",
+      "Tailwind-powered performance and responsive design",
     ],
-    technologies: ["React", "JavaScript", "Bootstrap"],
+    technologies: ["React", "JavaScript", "Tailwind"],
+    link: [
+      {
+        name: "View Project",
+        url: "https://taif-arwad.vercel.app/",
+      },
+    ],
   },
   {
     title: "Dashboard Template",
     description:
-      "A sleek and versatile admin dashboard template, built with reusability and ease of customization at its core.",
+      "A lightweight, customizable dashboard template designed to accelerate admin panel development with prebuilt layouts and components.",
     highlights: [
-      "Cross-platform compatible with HTML, JS, and Bootstrap",
-      "Component-driven and modular layout",
-      "Designed for intuitive navigation and data presentation",
+      "Modular dashboard components with Bootstrap styling",
+      "Responsive layout optimized for desktops and tablets",
+      "Easily extendable HTML/JS structure for rapid integration",
     ],
     technologies: ["HTML", "JavaScript", "Bootstrap"],
+    link: [
+      {
+        name: "View Project",
+        url: "https://youssefkhaled23.github.io/DashBoard/Dash-Page.html",
+      },
+      {
+        name: "View Repository",
+        url: "https://github.com/youssefkhaled23/DashBoard",
+      },
+    ],
   },
   {
     title: "Articles Template",
     description:
-      "A minimalist article and blog template focused on readability, structure, and elegant content presentation.",
+      "A streamlined blog template optimized for content readability, SEO, and multi-device accessibility.",
     highlights: [
-      "Clean, typographically optimized layout",
-      "Responsive design ensuring seamless experience across devices",
-      "Developed with standard web technologies for broad accessibility",
+      "Typography-centric layout for clear reading",
+      "Fully responsive with Bootstrap 5",
+      "Semantic structure supporting accessibility and SEO",
     ],
     technologies: ["HTML", "JavaScript", "Bootstrap"],
+    link: [
+      {
+        name: "View Project",
+        url: "https://youssefkhaled23.github.io/Articles/articles.html",
+      },
+      {
+        name: "View Repository",
+        url: "https://github.com/youssefkhaled23/Articles",
+      },
+    ],
+  },
+  {
+    title: "Trending Movie",
+    description:
+      "An entertainment-focused movie listing platform designed for browsing trending films with a clean, responsive layout.",
+    highlights: [
+      "Media-focused interface for showcasing dynamic content",
+      "Bootstrap-powered responsive grid layout",
+      "Optimized UX with semantic HTML structure",
+    ],
+    technologies: ["HTML", "JavaScript", "Bootstrap"],
+    link: [
+      {
+        name: "View Repository",
+        url: "https://github.com/youssefkhaled23/Trending-Movie",
+      },
+    ],
+  },
+  {
+    title: "Weather App",
+    description:
+      "A live weather forecasting app fetching real-time data, designed with usability and responsiveness in mind.",
+    highlights: [
+      "Weather API integration with location-based data fetching",
+      "Clean, responsive layout with Bootstrap",
+      "Minimalist interface with dynamic content rendering",
+    ],
+    technologies: ["HTML", "JavaScript", "Bootstrap"],
+    link: [
+      {
+        name: "View Project",
+        url: "https://weather-app-youssef4.vercel.app/",
+      },
+      {
+        name: "View Repository",
+        url: "https://github.com/youssefkhaled23/Weather-App",
+      },
+    ],
+  },
+  {
+    title: "Auth App",
+    description:
+      "A modern authentication interface supporting secure user login, registration, and form validation.",
+    highlights: [
+      "TypeScript-powered type-safe logic",
+      "Clean UI with responsive form handling",
+      "Integrated validation and auth flows",
+    ],
+    technologies: ["HTML", "TypeScript", "Bootstrap"],
+    link: [
+      {
+        name: "View Project",
+        url: "https://authentication-seven-chi.vercel.app/",
+      },
+      {
+        name: "View Repository",
+        url: "https://github.com/youssefkhaled23/Authentication",
+      },
+    ],
+  },
+  {
+    title: "Expense-Tracker",
+    description:
+      "A personal finance tracking tool enabling users to manage daily expenses with a clean, interactive UI.",
+    highlights: [
+      "User-friendly transaction input and visual tracking",
+      "Responsive layout built with Bootstrap and TypeScript",
+      "Lightweight and easy-to-deploy static app",
+    ],
+    technologies: ["HTML", "TypeScript", "Bootstrap"],
+    link: [
+      {
+        name: "View Project",
+        url: "https://expense-tracker-youssef4.vercel.app/",
+      },
+      {
+        name: "View Repository",
+        url: "https://github.com/youssefkhaled23/Expense-Tracker",
+      },
+    ],
   },
 ];
 
@@ -144,9 +279,10 @@ export default function Projects() {
         <h2 className="text-3xl font-bold mb-2 text-center">
           Frontend Projects
         </h2>
-   <p className="text-xl text-center text-zinc-600 dark:text-zinc-300 mb-12">
-  Crafting responsive, accessible, and visually engaging frontend experiences
-</p>
+        <p className="text-xl text-center text-zinc-600 dark:text-zinc-300 mb-12">
+          Crafting responsive, accessible, and visually engaging frontend
+          experiences
+        </p>
 
         <div className="space-y-12">
           {paginatedProjects.map((project) => (
@@ -179,17 +315,18 @@ export default function Projects() {
                 ))}
               </div>
 
-              {project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 text-blue-500 hover:text-blue-600"
-                >
-                  <span>View Repository</span>
-                  <ExternalLink className="h-4 w-4" />
-                </a>
-              )}
+              {project.link &&
+                project.link.map((e, index) => (
+                  <a
+                    href={e.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex mr-2 items-center space-x-2 text-blue-500 hover:text-blue-600"
+                  >
+                    <span>{e.name}</span>
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                ))}
             </div>
           ))}
         </div>
